@@ -643,6 +643,38 @@ export interface ApiPlatformPlatform extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiWishListWishList extends Struct.CollectionTypeSchema {
+  collectionName: 'wish_lists';
+  info: {
+    displayName: 'WishList';
+    pluralName: 'wish-lists';
+    singularName: 'wish-list';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    game: Schema.Attribute.Relation<'oneToOne', 'api::game.game'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::wish-list.wish-list'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    userss_user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1161,6 +1193,7 @@ declare module '@strapi/strapi' {
       'api::game.game': ApiGameGame;
       'api::global.global': ApiGlobalGlobal;
       'api::platform.platform': ApiPlatformPlatform;
+      'api::wish-list.wish-list': ApiWishListWishList;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
