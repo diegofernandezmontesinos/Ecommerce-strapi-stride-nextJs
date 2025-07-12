@@ -1,18 +1,23 @@
 "use strict";
-const stripe = require("stripe")(import.meta.env.STRAPI_API_KEY);
+
+let stripe;
+
+async function getStripeInstance() {
+  if (!stripe) {
+    const Stripe = (await import('stripe')).default;
+    stripe = new Stripe(process.env.STRAPI_API_KEY);
+  }
+  return stripe;
+}
+
+const { createCoreController } = require("@strapi/strapi").factories;
 
 function calcDiscountPrice(price, discount) {
   if (!discount) return price;
   const discountAmount = (price * discount) / 100;
   const result = price - discountAmount;
-
   return result.toFixed(2);
 }
-/**
- * order controller
- */
-
-const { createCoreController } = require("@strapi/strapi").factories;
 
 module.exports = createCoreController("api::order.order", ({ strapi }) => ({
   async paymentOrder(ctx) {
@@ -23,9 +28,10 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
         product.attributes.price,
         product.attributes.discount
       );
-
       totalPayment += Number(priceTemp) * product.quantity;
     });
+
+    const stripe = await getStripeInstance();
 
     const charge = await stripe.charges.create({
       amount: Math.round(totalPayment * 100),
