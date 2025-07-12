@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "next": "15.3.5",
+    "primeicons": "^7.0.0",
+    "primereact": "^10.9.6",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "semantic-ui-css": "^2.5.0",
-    "semantic-ui-react": "^2.1.5"
+    "react-dom": "^19.0.0"
   }
 }
