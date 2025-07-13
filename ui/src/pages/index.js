@@ -1,8 +1,11 @@
+import  { Button } from 'primereact/button';
+
 const Index = () => {
   return (
     <div>
       <h2>Games Shop</h2>
-    </div>
+      <Button severity="secondary" label="Ir al login"  className="primereactButton"></Button>
+    </div> 
   );
 };
 
