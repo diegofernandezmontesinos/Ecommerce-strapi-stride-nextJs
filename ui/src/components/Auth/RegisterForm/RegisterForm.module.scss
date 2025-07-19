@@ -1,0 +1,51 @@
+
+
+@use '@/scss/colors' as *; 
+
+
+.simpleForm {
+  max-width: 420px;
+  margin: 2rem auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    label {
+      font-weight: 500;
+      color: $text-primary;
+    }
+
+    .p-inputtext {
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid $text-primary;
+
+      &:focus {
+        border-color: $primary;
+        box-shadow: 0 0 0 2px rgba(255, 84, 0, 0.2);
+      }
+    }
+  }
+
+  .customSubmitButton {
+    background-color: $primary;
+    border: none;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 6px;
+
+    &:hover {
+      background-color: $primary-hover;
+    }
+  }
+}
