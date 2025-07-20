@@ -11,12 +11,14 @@
   "dependencies": {
     "@primer/octicons-react": "^19.15.3",
     "@primer/react": "^37.28.1",
+    "formik": "^2.4.6",
     "next": "15.3.5",
     "primeicons": "^7.0.0",
     "primereact": "^10.9.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "sass": "^1.89.2"
+    "sass": "^1.89.2",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@types/minimatch": "^6.0.0"
