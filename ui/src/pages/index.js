@@ -1,11 +1,18 @@
-import  { Button } from 'primereact/button';
+import { Button } from "primereact/button";
+import Link from "next/link";
 
 const Index = () => {
   return (
     <div>
       <h2>Games Shop</h2>
-      <Button severity="secondary" label="Ir al login"  className="primereactButton"></Button>
-    </div> 
+      <Link href="/join/sign-in">
+        <Button
+          severity="secondary"
+          label="Ir al login"
+          className="primereactButton"
+        ></Button>
+      </Link>
+    </div>
   );
 };
 

@@ -2,7 +2,6 @@ import * as Yup from "yup";
 
 export function initialValues() {
   return {
-    name: "",
     username: "",
     email: "",
     password: "",
@@ -14,6 +13,5 @@ export function validationSchema() {
     email: Yup.string().email(true).required(true),
     usermame: Yup.string().required(true),
     password: Yup.string().required(true),
-    name: Yup.string().required(true),
   });
 }
