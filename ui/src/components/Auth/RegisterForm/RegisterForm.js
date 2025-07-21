@@ -9,14 +9,13 @@ import { validationSchema, initialValues } from "./RegisterForm.form";
 const authCtrl = new Auth();
 
 export default function RegisterForm() {
-
   const router = useRouter();
 
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: validationSchema(),
     validateOnChange: false,
-     validationSchema: null,
+    validationSchema: null, //comentar a futuro
     onSubmit: async (formValue) => {
       try {
         await authCtrl.register(formValue);
@@ -29,24 +28,10 @@ export default function RegisterForm() {
 
   return (
     <form onSubmit={formik.handleSubmit} className={styles.simpleForm}>
-      {/* <div className={styles.formGroup}>
-        <label htmlFor="name">Nombre y apellido</label>
-        <InputText
-          id="name"
-          value={formik.values.name}
-          className={styles.inputText}
-          onChange={formik.handleChange}
-          error={formik.errors.name}
-        />
-        {formik.errors.name && (
-          <small className="p-error">{formik.errors.name}</small>
-        )}
-      </div> */}
-
       <div className={styles.formGroup}>
-        <label htmlFor="username">Usuario</label>
         <InputText
           id="username"
+          placeholder="Usuario"
           value={formik.values.username}
           className={styles.inputText}
           onChange={formik.handleChange}
@@ -58,9 +43,9 @@ export default function RegisterForm() {
       </div>
 
       <div className={styles.formGroup}>
-        <label htmlFor="email">Email</label>
         <InputText
           id="email"
+          placeholder="Email"
           value={formik.values.email}
           onChange={formik.handleChange}
           className={styles.inputText}
@@ -72,9 +57,9 @@ export default function RegisterForm() {
       </div>
 
       <div className={styles.formGroup}>
-        <label htmlFor="password">Contraseña</label>
         <InputText
           id="password"
+          placeholder="Contraseña"
           type="password"
           className={styles.inputText}
           value={formik.values.password}
