@@ -4,17 +4,25 @@ import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import styles from "./LoginForm.module.scss";
 import { useFormik } from "formik";
+import { useRouter } from "next/router";
+import { Auth } from "@/api";
+import { useAuth } from "@/hooks/useAuth";
 import { initialValues, validationSchema } from "./LoginForm.form";
 
+const authCtrl = new Auth();
 export default function LoginForm() {
+  const router = useRouter();
+  const {} = useAuth();
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: validationSchema(),
     validateOnChange: false,
-   // validationSchema: null, //comentar a futuro
+    // validationSchema: null, //comentar a futuro
     onSubmit: async (formValue) => {
       try {
-        console.log("Formulario enviado:", formValue);
+        const response = await authCtrl.login(formValue);
+        console.log("Login successful:", response);
+        router.push("/");
       } catch (error) {
         console.error(error);
       }
