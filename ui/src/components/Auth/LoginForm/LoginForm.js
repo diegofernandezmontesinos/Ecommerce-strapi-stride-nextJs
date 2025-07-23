@@ -6,13 +6,13 @@ import styles from "./LoginForm.module.scss";
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
 import { Auth } from "@/api";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "@/hooks";
 import { initialValues, validationSchema } from "./LoginForm.form";
 
 const authCtrl = new Auth();
 export default function LoginForm() {
   const router = useRouter();
-  const {} = useAuth();
+  const { login } = useAuth();
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: validationSchema(),
@@ -22,7 +22,8 @@ export default function LoginForm() {
       try {
         const response = await authCtrl.login(formValue);
         console.log("Login successful:", response);
-        router.push("/");
+        login(response.jwt);
+        //router.push("/");
       } catch (error) {
         console.error(error);
       }
