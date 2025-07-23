@@ -1,5 +1,9 @@
 import { createContext, useEffect, useState } from "react";
+import { Token, User } from "@/api"
 
+
+const tokenCtrl = new Token();
+const userCtrl = new User();
 export const AuthContext = createContext();
 
 export function AuthProvider(props) {
@@ -10,9 +14,11 @@ export function AuthProvider(props) {
 
   const login = async (token) => {
     try {
+      tokenCtrl.setToken(token);
+      const response = await userCtrl.getMe();
+      setUser(response);
       setToken(token);
       setLoading(false);
-      setUser({email: "diegoFM@test.com"})
     } catch (error) {
       console.error("Login failed:", error);
       setLoading(false);
