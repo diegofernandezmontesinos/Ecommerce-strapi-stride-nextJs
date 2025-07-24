@@ -3,18 +3,19 @@ import styles from "./JoinLayouts.module.scss";
 import Link from "next/link";
 import { XIcon } from "@primer/octicons-react";
 import Image from "next/image";
-import { useRouter }  from "next/router";
+import { useRouter } from "next/router";
 import { useAuth } from "@/hooks";
-
-
 
 export function JoinLayouts(props) {
   const { children } = props;
   const router = useRouter();
   const { user } = useAuth();
 
-  if(user) router.push("/");
-   return (
+  if (user) {
+    router.push("/");
+    return null;
+  }
+  return (
     <div className={styles.container}>
       <div className={styles.topBar}>
         <Link href="/">

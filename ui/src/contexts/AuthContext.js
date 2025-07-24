@@ -1,16 +1,31 @@
 import { createContext, useEffect, useState } from "react";
-import { Token, User } from "@/api"
+import { Token, User } from "@/api";
 
-
+export const AuthContext = createContext();
 const tokenCtrl = new Token();
 const userCtrl = new User();
-export const AuthContext = createContext();
 
 export function AuthProvider(props) {
   const { children } = props;
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    (async () => {
+      const token = tokenCtrl.getToken();
+      if (!token) {
+        logout();
+        setLoading(false);
+        return;
+      }
+      if (tokenCtrl.hasExpired(token)) {
+        logout();
+      } else {
+        await login(token);
+      }
+    })();
+  }, []);
 
   const login = async (token) => {
     try {
@@ -24,17 +39,25 @@ export function AuthProvider(props) {
       setLoading(false);
     }
   };
+
+  const logout = () => {
+    console.log("Logging out...");
+    tokenCtrl.removeToken();
+    setToken(null);
+    setUser(null);
+  };
+
+  const updateUser = (key, value) => {
+    setUser({ ...user, [key]: value });
+  };
+
   const data = {
     accessToken: token,
     user,
     login,
-    logout: null,
-    updateUser: null,
+    logout,
+    updateUser,
   };
-
-  useEffect(() => {
-    setLoading(false);
-  }, []);
 
   if (loading) return null;
 
