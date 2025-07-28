@@ -1,5 +1,6 @@
-import styles from "./BasicLayout.module.scss";
+import styles from "./BasicLayout.module.scss"
 import classNames from "classnames";
+import { TopBar } from "@/components/Layout";
 
 export function BasicLayout(props) {
   const {
@@ -11,7 +12,7 @@ export function BasicLayout(props) {
 
   return (
     <>
-      {/* TODO: TopBar */}
+      <TopBar isOpenSearch={isOpenSearch}/>
       <div
         style={{ maxWidth: "1200px" }}
         className={classNames("p-mx-auto p-px-4", {

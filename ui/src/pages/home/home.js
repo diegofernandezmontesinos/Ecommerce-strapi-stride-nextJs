@@ -1,10 +1,9 @@
-import { BasicLayout } from "@/layouts"
+import { BasicLayout } from "@/layouts";
 
 export default function Home() {
-
   return (
-    <BasicLayout relative isContainer>
-      <h2>Estamos en Home</h2>
+    <BasicLayout>
+      <h2 style={{ paddingTop: 100 }}>Estamos en Home</h2>
     </BasicLayout>
   );
 }
