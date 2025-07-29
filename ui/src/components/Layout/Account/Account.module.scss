@@ -1,0 +1,39 @@
+@use "~/src/scss/index.scss" as *;
+
+.account {
+  display: flex;
+  button {
+    background-color: transparent !important;
+    margin-left: 10px !important;
+    border: none;
+  }
+  &:hover {
+    button {
+      color: $primary;
+    }
+  }
+
+  > i {
+    font-size: 18px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: unset;
+  }
+  .cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    > div {
+      background-color: $primary;
+      color: $text-primary;
+      font-size: 18px;
+      margin-left: 5px;
+    }
+  }
+  .user {
+    background-color: $background-tertiary !important;
+    border-radius: 10px;
+    border: 2px solid $background-tertiary;
+  }
+}

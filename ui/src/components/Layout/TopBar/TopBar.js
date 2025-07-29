@@ -1,6 +1,8 @@
 import Link from "next/link";
-import styles from "./TopBar.module.scss";
 import Image from "next/image";
+import { Account} from "../Account"
+import { Menu } from "../Menu"
+import styles from "./TopBar.module.scss";
 
 export function TopBar(props) {
   const { isOpenSearch } = props;
@@ -13,12 +15,12 @@ export function TopBar(props) {
       </div>
       <div className={styles.center}>
         <div>
-          <span>Menu</span>
+          <Menu isOpenSearch={isOpenSearch}/>
         </div>
       </div>
 
       <div className={styles.right}>
-        <span>ACCOUNT</span>
+        <Account />
       </div>
     </div>
   );

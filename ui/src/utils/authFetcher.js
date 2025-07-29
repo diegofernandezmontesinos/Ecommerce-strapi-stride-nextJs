@@ -11,9 +11,11 @@ export async function authFetcher(url, params) {
 
   if (!token) {
     logout();
+     return new Response(null, { status: 401, statusText: "Unauthorized" });
   } else {
     if (tokenCtrl.hasExpired(token)) {
       logout();
+      return new Response(null, { status: 401, statusText: "Token expired" });
     } else {
       const paramsTemp = {
         ...params,
@@ -25,7 +27,7 @@ export async function authFetcher(url, params) {
       try {
         return await fetch(url, paramsTemp);
       } catch (error) {
-        return error;
+        return new Response(null, { status: 500, statusText: "Fetch error" });
       }
     }
   }

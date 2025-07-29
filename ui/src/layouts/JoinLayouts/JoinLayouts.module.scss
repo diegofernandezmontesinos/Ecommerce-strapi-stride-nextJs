@@ -1,4 +1,4 @@
-@import "~/src/scss/index.scss";
+@use "~/src/scss/index.scss" as *;
 
 .container {
   height: 100vh;
