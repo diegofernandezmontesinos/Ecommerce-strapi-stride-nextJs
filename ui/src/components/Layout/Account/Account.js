@@ -1,10 +1,10 @@
-import { Badge } from 'primereact/badge';
+import { Badge } from "primereact/badge";
 import { Button } from "primereact/button";
 import { useRouter } from "next/router";
 import { useAuth } from "@/hooks";
 import styles from "./Account.module.scss";
 
-//TODO ... 
+//TODO ...
 const total = 5;
 
 export function Account() {
@@ -20,21 +20,17 @@ export function Account() {
   };
   return (
     <div className={styles.account}>
-      <Button
-        icon="pi pi-shopping-cart"
-        className={styles.cart}
-        onClick={goToCart}
+      <button onClick={goToCart} className={styles.iconButton}>
+        <i className="pi pi-shopping-cart" />
+        {total > 0 && <span className={styles.cartBadge}>{total}</span>}
+      </button>
+
+      <button
+        onClick={user ? goToAccount : goToLogin}
+        className={styles.iconButton}
       >
-        {total > 0 && <Badge value={total} />
-
-}
-      </Button>
-
-      {!user ? (
-        <Button icon="pi pi-bell" onClick={goToLogin}></Button>
-      ) : (
-        <Button className={styles.user} onClick={goToAccount}></Button>
-      )}
+        <i className="pi pi-user" />
+      </button>
     </div>
   );
 }

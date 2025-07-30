@@ -2,38 +2,45 @@
 
 .account {
   display: flex;
-  button {
-    background-color: transparent !important;
-    margin-left: 10px !important;
-    border: none;
-  }
-  &:hover {
-    button {
-      color: $primary;
+  align-items: center;
+  gap: 12px;
+
+  .iconButton {
+    background-color: $background-tertiary;
+    border-radius: 10px;
+    width: 36px;
+    height: 36px;
+    border: 2px solid $background-tertiary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: white;
+    padding: 0;
+
+    i {
+      font-size: 1.2rem;
+    }
+
+    &:hover {
+      background-color: lighten($background-tertiary, 5%);
     }
   }
 
-  > i {
-    font-size: 18px;
-    height: 20px;
+  .cartBadge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background-color: $primary;
+    color: white;
+    font-size: 11px;
+    height: 18px;
+    min-width: 18px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    justify-content: unset;
-  }
-  .cart {
-    display: flex;
     justify-content: center;
-    align-items: center;
-    > div {
-      background-color: $primary;
-      color: $text-primary;
-      font-size: 18px;
-      margin-left: 5px;
-    }
-  }
-  .user {
-    background-color: $background-tertiary !important;
-    border-radius: 10px;
-    border: 2px solid $background-tertiary;
+    padding: 2px;
+    z-index: 1;
   }
 }
