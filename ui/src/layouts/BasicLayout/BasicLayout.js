@@ -1,6 +1,6 @@
 import styles from "./BasicLayout.module.scss"
 import classNames from "classnames";
-import { TopBar } from "@/components/Layout";
+import { TopBar, Footer } from "@/components/Layout";
 
 export function BasicLayout(props) {
   const {
@@ -32,6 +32,7 @@ export function BasicLayout(props) {
       </div>
 
       {/* TODO: footer */}
+      <Footer />
     </>
   );
 }
