@@ -1,0 +1,93 @@
+@use "~/src/scss/index.scss" as *;
+
+.customTabs {
+  :global {
+     margin: 0 15px 0 15px;
+    .p-tabview {
+      background-color: transparent;
+    }
+
+    .p-tabview-nav {
+        
+      background-color: transparent;
+      border: none;
+      gap: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .p-tabview-nav li .p-tabview-nav-link {
+      color: $text-primary;
+      border: none;
+      border-bottom: 3px solid transparent;
+      font-weight: 500;
+      padding: 0.75rem 1rem;
+      transition: all 0.3s ease;
+      background-color: transparent;
+    }
+
+    .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+      color: $primary;
+      border-bottom: 3px solid $primary;
+    }
+
+    .p-tabview-nav li .p-tabview-nav-link:hover {
+      color:$primary;
+    }
+
+    .p-tabview-panels {
+      background-color: transparent;
+      padding: 1rem 0;
+      color: $text-primary;
+    }
+  }
+  
+}
+
+.p-tabview-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  border: none;
+
+  // Esto aplica solo desde el cuarto tab en adelante
+  li:nth-child(4) {
+    margin-left: auto;
+  }
+
+  li {
+    .p-tabview-nav-link {
+      color: $text-primary;
+      border: none;
+      border-bottom: 3px solid transparent;
+      font-weight: 500;
+      padding: 0.75rem 1rem;
+      transition: all 0.3s ease;
+      background-color: transparent;
+    }
+
+    &.p-highlight .p-tabview-nav-link {
+      color: $primary;
+      border-bottom: 3px solid $primary;
+    }
+
+    .p-tabview-nav-link:hover {
+      color: $primary;
+    }
+  }
+}
+
+// Estilo especial para el botón
+.logout-button {
+  color: $text-primary;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+
+  &:hover {
+    color: $primary !important;
+  }
+}
+

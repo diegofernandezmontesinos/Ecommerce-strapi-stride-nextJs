@@ -14,7 +14,7 @@ export function BasicLayout(props) {
     <>
       <TopBar isOpenSearch={isOpenSearch}/>
       <div
-        style={{ maxWidth: "1200px" }}
+        // style={{ maxWidth: "1200px" }}
         className={classNames("p-mx-auto p-px-4", {
           [styles.relative]: relative,
         })}
@@ -31,7 +31,6 @@ export function BasicLayout(props) {
         )}
       </div>
 
-      {/* TODO: footer */}
       <Footer />
     </>
   );
