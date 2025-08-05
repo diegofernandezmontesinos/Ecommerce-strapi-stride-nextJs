@@ -1,7 +1,7 @@
 import { TabView, TabPanel } from "primereact/tabview";
 import { BasicLayout } from "@/layouts";
 import { Button } from "primereact/button";
-import { Info } from "@/components/Account";
+import { Info, Settings } from "@/components/Account";
 import { useRouter } from "next/router";
 import { useAuth } from "@/hooks";
 import styles from "./account.module.scss";
@@ -31,7 +31,7 @@ export default function AccountPage() {
           </TabPanel>
 
           <TabPanel header="Ajustes" headerClassName="right-tab">
-            <p>Mis ajustes</p>
+            <Settings.ChangeNameForm />
           </TabPanel>
           <TabPanel
             header={

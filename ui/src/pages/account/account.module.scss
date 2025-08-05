@@ -3,6 +3,7 @@
 .customTabs {
   :global {
      margin: 0 15px 0 15px;
+     width: max-content;
     .p-tabview {
       background-color: transparent;
     }

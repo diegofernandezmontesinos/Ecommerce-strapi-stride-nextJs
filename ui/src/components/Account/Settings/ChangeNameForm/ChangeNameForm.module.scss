@@ -1,0 +1,20 @@
+@use "~/src/scss/index.scss" as *;
+
+.content {
+  display: flex;
+  align-items: center;
+
+  .labelContent {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  input {
+    width: 100%;
+    margin: 0 !important;
+  }
+}
+
+.button {
+    background-color: $primary !important;
+}
