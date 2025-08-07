@@ -1,14 +1,16 @@
 @use "~/src/scss/index.scss" as *;
 
-.content {
+.form {
   display: flex;
   flex-direction: column;
+  width: 50%;
+  margin: 0 10px;
   align-items: flex-start;
   gap: 1em;
 
   .labelContent {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
     gap: 1em;
   }

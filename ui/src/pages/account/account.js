@@ -4,7 +4,7 @@ import { Button } from "primereact/button";
 import { Info, Settings } from "@/components/Account";
 import { useRouter } from "next/router";
 import { useAuth } from "@/hooks";
-import {Separator } from "@/components/Shared"
+import { Separator } from "@/components/Shared";
 import styles from "./account.module.scss";
 
 export default function AccountPage() {
@@ -33,7 +33,11 @@ export default function AccountPage() {
 
           <TabPanel header="Ajustes" headerClassName="right-tab">
             <Settings.ChangeNameForm />
-            <Separator height={80}/>
+            <div className={styles.containerForms}>
+              <Settings.ChangeEmailForm />
+              <Settings.ChangePasswordForm />
+            </div>
+            <Separator height={80} />
           </TabPanel>
           <TabPanel
             header={
