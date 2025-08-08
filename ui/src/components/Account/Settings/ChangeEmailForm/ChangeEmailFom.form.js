@@ -9,7 +9,12 @@ export function initialValues(email, repeatEmail) {
 
 export function validationSchema() {
   return Yup.object({
-    email: Yup.string().email(true).required(true),
-    repeatEmail: Yup.string().email(true).required(true).oneOf([Yup.ref("email")], true),
+    email: Yup.string()
+      .email("Introduce un email válido")
+      .required("El email es obligatorio"),
+
+    repeatEmail: Yup.string()
+      .oneOf([Yup.ref("email")], "Los emails no coinciden")
+      .required("Repite el email"),
   });
 }
