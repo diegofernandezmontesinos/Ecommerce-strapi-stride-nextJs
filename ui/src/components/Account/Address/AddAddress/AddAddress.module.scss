@@ -1,0 +1,12 @@
+@use "~/src/scss/index.scss" as *;
+
+.addAddressContainer {
+  display: flex;
+  justify-content: end;
+}
+
+.addBtn {
+  width: 5em;
+  background-color: #ff5400 !important;
+  height: 5em;
+}

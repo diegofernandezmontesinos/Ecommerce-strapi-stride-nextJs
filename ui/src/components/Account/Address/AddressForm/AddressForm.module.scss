@@ -1,0 +1,41 @@
+@use "~/src/scss/index.scss" as *;
+
+/* AddressForm.module.scss */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.inputTitle input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: none;
+  background-color: $background-secondary;
+  input {
+    background-color: $background-secondary;
+  }
+}
+
+.twoColumns {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  input {
+    background-color: $background-secondary;
+    border-radius: 6px;
+    border: none;
+  }
+}
+
+.button {
+  background-color: #ff4d00;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}

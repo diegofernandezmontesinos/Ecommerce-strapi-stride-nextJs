@@ -1,0 +1,42 @@
+/* BasicModal.module.scss */
+
+/* Clase local que aplicarás al <Dialog> */
+.modalOverride {
+  :global(.p-dialog) {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  :global(.p-dialog-header),
+  :global(.p-dialog-content),
+  :global(.p-dialog-footer) {
+    background-color: #2a2a2a;
+    color: #fff;
+  }
+
+  :global(.p-dialog-header) {
+    border-bottom: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 1rem 1.25rem;
+  }
+
+  :global(.p-dialog-content) {
+    font-size: 1rem;
+    padding: 1rem 1.25rem;
+  }
+
+  :global(.p-dialog-footer) {
+    border-top: none;
+    padding: 1rem 1.25rem;
+  }
+
+  :global(.p-dialog-header-icon) {
+    color: #fff;
+    transition: color 0.2s;
+  }
+
+  :global(.p-dialog-header-icon:hover) {
+    color: #ffcc00;
+  }
+}

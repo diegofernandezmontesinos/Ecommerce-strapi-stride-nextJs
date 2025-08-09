@@ -1,7 +1,7 @@
 import { TabView, TabPanel } from "primereact/tabview";
 import { BasicLayout } from "@/layouts";
 import { Button } from "primereact/button";
-import { Info, Settings } from "@/components/Account";
+import { Info, Settings, Address } from "@/components/Account";
 import { useRouter } from "next/router";
 import { useAuth } from "@/hooks";
 import { Separator } from "@/components/Shared";
@@ -28,7 +28,8 @@ export default function AccountPage() {
             <p>Mi lista de deseos</p>
           </TabPanel>
           <TabPanel header="Direcciones">
-            <p>Mis direcciones</p>
+            <Address.AddAddress />
+            <Separator height={80} />
           </TabPanel>
 
           <TabPanel header="Ajustes" headerClassName="right-tab">
