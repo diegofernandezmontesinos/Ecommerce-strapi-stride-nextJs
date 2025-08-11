@@ -29,6 +29,7 @@ export default function AccountPage() {
           </TabPanel>
           <TabPanel header="Direcciones">
             <Address.AddAddress />
+            <Address.ListAddress />
             <Separator height={80} />
           </TabPanel>
 

@@ -39,7 +39,7 @@
       "type": "string",
       "required": true
     },
-    "users": {
+    "user": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
