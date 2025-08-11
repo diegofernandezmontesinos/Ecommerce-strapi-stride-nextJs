@@ -1,26 +1,43 @@
 import React, { useState, useEffect } from "react";
-import { Address } from "@/api";
-import { useAuth } from "@/hooks"
+import { Address as AddressCtrl } from "@/api";
+import { map } from "lodash";
+import { useAuth } from "@/hooks";
+import { Address } from "./Address";
 import styles from "./ListAddress.module.scss";
 
-const addressCtrl = new Address();
-
+const addressCtrl = new AddressCtrl();
 
 export function ListAddress() {
   const [addresses, setAddresses] = useState(null);
   const { user } = useAuth();
 
-    useEffect(() => {
-        (async () => {
-            try {
-                const response = await addressCtrl.getAll(user.id);
-                setAddresses(response.data);
-                console.log(response);
-            } catch (error) {
-                throw error
-            }
-        })();
-    }, []);
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await addressCtrl.getAll(user.id);
+        setAddresses(response.data);
+        console.log(response);
+      } catch (error) {
+        throw error;
+      }
+    })();
+  }, []);
 
-  return <div>ListAddress</div>;
+  if (!addresses) return null;
+  return (
+    <div className={styles.addresses}>
+      {addresses.map((item) => (
+        <Address
+          key={item.id}
+          addressId={item.id}
+          address={item.address}
+          title={item.title}
+          state={item.state}
+          city={item.city}
+          postal_code={item.postal_code}
+          name={item.name}
+        />
+      ))}
+    </div>
+  );
 }
