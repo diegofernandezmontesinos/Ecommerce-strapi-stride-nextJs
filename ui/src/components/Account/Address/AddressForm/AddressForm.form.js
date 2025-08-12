@@ -1,14 +1,15 @@
 import * as Yup from "yup";
 
-export function initialValues() {
+export function initialValues(title, name, postal_code, city, state, address, phone) {
+  console.log("prueba", address);
   return {
-    title: "",
-    name: "",
-    address: "",
-    city: "",
-    state: "",
-    postal_code: "",
-    phone: "",
+    title: title ? title : "",
+    name: name ? name : "",
+    address: address ? address : "",
+    city: city ? city : "",
+    state: state ? state : "",
+    postal_code: postal_code ? postal_code : "",
+    phone: phone ? phone : "",
   };
 }
 

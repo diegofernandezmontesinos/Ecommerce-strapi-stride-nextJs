@@ -7,7 +7,7 @@ import styles from "./ListAddress.module.scss";
 const addressCtrl = new AddressCtrl();
 
 export function ListAddress(props) {
-  const { canReload, onreload } = props;
+  const { canReload, onReload } = props;
   const [addresses, setAddresses] = useState(null);
   const { user } = useAuth();
 
@@ -36,6 +36,8 @@ export function ListAddress(props) {
           city={item.city}
           postal_code={item.postal_code}
           name={item.name}
+          phone={item.phone}
+          onReload={onReload}
         />
       ))}
     </div>

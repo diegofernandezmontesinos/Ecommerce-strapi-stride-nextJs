@@ -4,21 +4,43 @@ import { Address } from "@/api";
 import { useAuth } from "@/hooks";
 import { initialValues, validationSchema } from "./AddressForm.form";
 
-
 const addressCtrl = new Address();
 
 export function AddressForm(props) {
-  const { onClose, onReload } = props;
+  const {
+    onClose,
+    onReload,
+    address,
+    addressId,
+    title,
+    name,
+    phone,
+    postal_code,
+    city,
+    state,
+  } = props;
   const { user } = useAuth();
 
   const formik = useFormik({
-    initialValues: initialValues(),
+    initialValues: initialValues(
+      address,
+      title,
+      name,
+      postal_code,
+      city,
+      state,
+      phone
+    ),
     validationSchema: validationSchema(),
     validateOnChange: false,
     onSubmit: async (formValues) => {
       try {
-        console.log(formValues)
-        await addressCtrl.create(formValues, user.id)
+        if (addressId) {
+          console.log("Actualizar dirección");
+        } else {
+          await addressCtrl.create(formValues, user.id);
+        }
+
         formik.handleReset();
         onReload();
         onClose();
