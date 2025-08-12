@@ -11,12 +11,13 @@ export function ListAddress(props) {
   const [addresses, setAddresses] = useState(null);
   const { user } = useAuth();
 
+  console.log(addresses)
   useEffect(() => {
     (async () => {
       try {
         const response = await addressCtrl.getAll(user.id);
         setAddresses(response.data);
-        console.log(response);
+         console.log(addresses)
       } catch (error) {
         throw error;
       }

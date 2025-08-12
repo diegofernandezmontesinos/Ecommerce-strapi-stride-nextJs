@@ -21,7 +21,6 @@ export default function LoginForm() {
     onSubmit: async (formValue) => {
       try {
         const response = await authCtrl.login(formValue);
-        console.log("Login successful:", response);
         login(response.jwt);
         //router.push("/");
       } catch (error) {

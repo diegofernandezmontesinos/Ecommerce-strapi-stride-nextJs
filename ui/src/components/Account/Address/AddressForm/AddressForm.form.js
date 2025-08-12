@@ -1,15 +1,14 @@
 import * as Yup from "yup";
 
-export function initialValues(title, name, postal_code, city, state, address, phone) {
-  console.log("prueba", address);
+export function initialValues({ title, name, address, city, state, postal_code, phone }) {
   return {
-    title: title ? title : "",
-    name: name ? name : "",
-    address: address ? address : "",
-    city: city ? city : "",
-    state: state ? state : "",
-    postal_code: postal_code ? postal_code : "",
-    phone: phone ? phone : "",
+    title: title ?? "",
+    name: name ?? "",
+    address: address ?? "",
+    city: city ?? "",
+    state: state ?? "",
+    postal_code: postal_code ?? "",
+    phone: phone ?? "",
   };
 }
 
@@ -21,6 +20,6 @@ export function validationSchema() {
     city: Yup.string().required("El city es obligatorio"),
     state: Yup.string().required("El state es obligatorio"),
     postal_code: Yup.string().required("El postal_code es obligatorio"),
-    phone: Yup.number().required("El phone es obligatorio"),
+    phone: Yup.number()
   });
 }

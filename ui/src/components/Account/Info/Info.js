@@ -6,7 +6,6 @@ import { Button } from "primereact/button";
 export function Info() {
   const { data, user } = useAuth();
   const createdAt = new Date(user.createdAt).toISOString();
-  console.log(data);
   return (
     <div className={styles.info}>
       <Button

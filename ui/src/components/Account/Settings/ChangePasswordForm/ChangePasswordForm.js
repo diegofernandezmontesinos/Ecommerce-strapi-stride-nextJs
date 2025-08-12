@@ -17,7 +17,6 @@ export function ChangePasswordForm() {
     // validationSchema: null, //comentar a futuro
     onSubmit: async (formValue) => {
       try {
-        console.log("entré");
        await userCtrl.updateMe(user.id, { password: formValue.password });
        logout();
       } catch (error) {

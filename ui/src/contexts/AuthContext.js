@@ -41,7 +41,6 @@ export function AuthProvider(props) {
   };
 
   const logout = () => {
-    console.log("Logging out...");
     tokenCtrl.removeToken();
     setToken(null);
     setUser(null);

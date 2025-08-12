@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BasicModal } from "@/components/Shared";
+import { BasicModal, Confirm } from "@/components/Shared";
 import { AddressForm } from "../../AddressForm";
 import styles from "./Address.module.scss";
 
@@ -15,8 +15,10 @@ export function Address(props) {
     onReload,
   } = props;
   const [isShowEdit, setIsShowEdit] = useState(false);
+  const [isShowCofirm, setIsShowConfirm] = useState(false);
 
   const openCloseEdit = () => setIsShowEdit((prev) => !prev);
+  const openCloseConfirm = () => setIsShowConfirm((prev) => !prev);
 
   return (
     <>
@@ -37,11 +39,21 @@ export function Address(props) {
             <i className="pi pi-pencil" />
           </button>
 
-          <button type="submit" className={styles.button}>
+          <button
+            type="submit"
+            className={styles.button}
+            onClick={openCloseConfirm}
+          >
             <i className="pi pi-times" />
           </button>
         </div>
       </div>
+
+      <Confirm
+        isOpen={isShowCofirm}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={() => console.log("confirmar eliminacion")}
+      />
 
       <BasicModal
         visible={isShowEdit}

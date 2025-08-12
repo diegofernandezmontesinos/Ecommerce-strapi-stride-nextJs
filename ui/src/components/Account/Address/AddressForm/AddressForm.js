@@ -22,21 +22,22 @@ export function AddressForm(props) {
   const { user } = useAuth();
 
   const formik = useFormik({
-    initialValues: initialValues(
-      address,
+    initialValues: initialValues({
       title,
       name,
-      postal_code,
+      address,
       city,
       state,
-      phone
-    ),
+      postal_code,
+      phone,
+    }),
     validationSchema: validationSchema(),
     validateOnChange: false,
     onSubmit: async (formValues) => {
       try {
         if (addressId) {
           console.log("Actualizar dirección");
+          await addressCtrl.update(formValues, addressId);
         } else {
           await addressCtrl.create(formValues, user.id);
         }
