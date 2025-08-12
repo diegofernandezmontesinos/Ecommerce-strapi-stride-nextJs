@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Address as AddressCtrl } from "@/api";
-import { map } from "lodash";
 import { useAuth } from "@/hooks";
 import { Address } from "./Address";
 import styles from "./ListAddress.module.scss";
 
 const addressCtrl = new AddressCtrl();
 
-export function ListAddress() {
+export function ListAddress(props) {
+  const { canReload, onreload } = props;
   const [addresses, setAddresses] = useState(null);
   const { user } = useAuth();
 
@@ -21,7 +21,7 @@ export function ListAddress() {
         throw error;
       }
     })();
-  }, []);
+  }, [canReload]);
 
   if (!addresses) return null;
   return (

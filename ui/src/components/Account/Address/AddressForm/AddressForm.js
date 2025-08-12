@@ -8,7 +8,7 @@ import { initialValues, validationSchema } from "./AddressForm.form";
 const addressCtrl = new Address();
 
 export function AddressForm(props) {
-  const { onClose } = props;
+  const { onClose, onReload } = props;
   const { user } = useAuth();
 
   const formik = useFormik({
@@ -20,7 +20,8 @@ export function AddressForm(props) {
         console.log(formValues)
         await addressCtrl.create(formValues, user.id)
         formik.handleReset();
-       // onClose();
+        onReload();
+        onClose();
       } catch (error) {
         console.error("Error al enviar el formulario:", error);
       }

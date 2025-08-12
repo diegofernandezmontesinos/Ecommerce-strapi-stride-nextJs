@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { TabView, TabPanel } from "primereact/tabview";
 import { BasicLayout } from "@/layouts";
 import { Button } from "primereact/button";
@@ -11,10 +12,14 @@ export default function AccountPage() {
   const { user, logout } = useAuth();
   const router = useRouter();
 
+  const [canReload, setCanReload] = useState(false);
+
   if (!user) {
     router.push("/");
     return null;
   }
+
+  const onReload = () => setCanReload((prev) => !prev);
 
   return (
     <>
@@ -28,8 +33,8 @@ export default function AccountPage() {
             <p>Mi lista de deseos</p>
           </TabPanel>
           <TabPanel header="Direcciones">
-            <Address.AddAddress />
-            <Address.ListAddress />
+            <Address.AddAddress onReload={onReload}/>
+            <Address.ListAddress canReload={canReload} onReload={onReload}/>
             <Separator height={80} />
           </TabPanel>
 
