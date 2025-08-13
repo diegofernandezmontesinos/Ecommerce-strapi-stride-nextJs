@@ -11,7 +11,7 @@ export async function authFetcher(url, params) {
 
   if (!token) {
     logout();
-     return new Response(null, { status: 401, statusText: "Unauthorized" });
+     return new Response(null, { status: 401, statusText: "Unauthorized, add token" });
   } else {
     if (tokenCtrl.hasExpired(token)) {
       logout();

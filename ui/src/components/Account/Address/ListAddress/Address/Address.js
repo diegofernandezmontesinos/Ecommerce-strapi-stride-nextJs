@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { BasicModal, Confirm } from "@/components/Shared";
 import { AddressForm } from "../../AddressForm";
+import { Address as AddressCtrl } from "@/api";
 import styles from "./Address.module.scss";
 
+const addressCtrl = new AddressCtrl();
 export function Address(props) {
   const {
     addressId,
@@ -19,6 +21,15 @@ export function Address(props) {
 
   const openCloseEdit = () => setIsShowEdit((prev) => !prev);
   const openCloseConfirm = () => setIsShowConfirm((prev) => !prev);
+
+  const onDelete = async () => {
+    try {
+      await addressCtrl.delete(addressId);
+      onReload();
+    } catch (error) {
+      throw error;
+    }
+  };
 
   return (
     <>
@@ -51,8 +62,8 @@ export function Address(props) {
 
       <Confirm
         isOpen={isShowCofirm}
-        onClose={() => setIsModalOpen(false)}
-        onConfirm={() => console.log("confirmar eliminacion")}
+        onClose={openCloseConfirm}
+        onConfirm={onDelete}
       />
 
       <BasicModal

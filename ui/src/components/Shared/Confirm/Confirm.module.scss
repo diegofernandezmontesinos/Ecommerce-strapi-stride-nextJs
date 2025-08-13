@@ -1,0 +1,40 @@
+@use "~/src/scss/index.scss" as *;
+
+.container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.section {
+  background-color: $background-primary;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 20vw;
+  width: 90%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.deleteBtn {
+  margin-right: 10px;
+  padding: 8px 16px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancelBtn {
+  padding: 8px 16px;
+  color: $danger;
+  background-color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

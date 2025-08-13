@@ -13,7 +13,7 @@ export class Address {
         body: JSON.stringify({
           data: {
             ...data,
-            user: userId,
+            users: userId,
           },
         }),
       };
@@ -44,12 +44,6 @@ export class Address {
 
   async update(data, addressId) {
     try {
-      console.log(
-        "DEBUG URL:",
-        `${ENV.API_URL}/${ENV.ENDPOINTS.ADDRESS}/${addressId}`
-      );
-      console.log("DEBUG body:", data);
-
       const url = `${ENV.API_URL}/${ENV.ENDPOINTS.ADDRESS}/${addressId}`;
       const bodyData = { data: data };
       const params = {
@@ -60,8 +54,6 @@ export class Address {
 
       const response = await authFetcher(url, params);
       const result = await response.json();
-      console.log("DEBUG status:", response.status);
-      console.log("DEBUG result:", result);
 
       if (![200, 201].includes(response.status)) throw result;
       return result;
@@ -69,4 +61,26 @@ export class Address {
       throw error;
     }
   }
+
+  async delete(addressId) {
+  try {
+    const url = `${ENV.API_URL}/${ENV.ENDPOINTS.ADDRESS}/${addressId}`;
+    const params = { method: "DELETE" };
+
+    const response = await authFetcher(url, params);
+
+    // Si es 204, el borrado fue exitoso pero no hay contenido
+    if (response.status === 204) {
+      return true;
+    }
+
+    const result = await response.json();
+    if (![200, 201].includes(response.status)) throw result;
+
+    return result;
+  } catch (error) {
+    throw error;
+  }
+}
+
 }
