@@ -13,7 +13,7 @@ export class Address {
         body: JSON.stringify({
           data: {
             ...data,
-            users: userId,
+            user: userId,
           },
         }),
       };
@@ -29,7 +29,7 @@ export class Address {
 
   async getAll(userId) {
     try {
-      const filters = `filters[users][id][$eq]=${userId}`;
+      const filters = `filters[user][id][$eq]=${userId}`;
       const url = `${ENV.API_URL}/${ENV.ENDPOINTS.ADDRESS}?${filters}`;
 
       const response = await authFetcher(url);
@@ -42,9 +42,9 @@ export class Address {
     }
   }
 
-  async update(data, addressId) {
+  async update(data, documentId) {
     try {
-      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.ADDRESS}/${addressId}`;
+      const url = `${ENV.API_URL}/${ENV.ENDPOINTS.ADDRESS}/${documentId}`;
       const bodyData = { data: data };
       const params = {
         method: "PUT",
@@ -62,9 +62,9 @@ export class Address {
     }
   }
 
-  async delete(addressId) {
+  async delete(documentId) {
   try {
-    const url = `${ENV.API_URL}/${ENV.ENDPOINTS.ADDRESS}/${addressId}`;
+    const url = `${ENV.API_URL}/${ENV.ENDPOINTS.ADDRESS}/${documentId}`;
     const params = { method: "DELETE" };
 
     const response = await authFetcher(url, params);

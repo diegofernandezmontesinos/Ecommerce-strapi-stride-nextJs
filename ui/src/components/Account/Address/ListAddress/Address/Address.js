@@ -15,6 +15,7 @@ export function Address(props) {
     city,
     state,
     onReload,
+    documentId,
   } = props;
   const [isShowEdit, setIsShowEdit] = useState(false);
   const [isShowCofirm, setIsShowConfirm] = useState(false);
@@ -24,7 +25,7 @@ export function Address(props) {
 
   const onDelete = async () => {
     try {
-      await addressCtrl.delete(addressId);
+      await addressCtrl.delete(documentId);
       onReload();
     } catch (error) {
       throw error;
@@ -75,6 +76,7 @@ export function Address(props) {
           onClose={openCloseEdit}
           onReload={onReload}
           addressId={addressId}
+          documentId={documentId}
           address={address}
           title={title}
           name={name}

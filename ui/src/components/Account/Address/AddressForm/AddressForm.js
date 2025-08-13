@@ -18,6 +18,7 @@ export function AddressForm(props) {
     postal_code,
     city,
     state,
+    documentId,
   } = props;
   const { user } = useAuth();
 
@@ -35,10 +36,11 @@ export function AddressForm(props) {
     validateOnChange: false,
     onSubmit: async (formValues) => {
       try {
-        if (addressId) {
+        if (documentId) {
           console.log("Actualizar dirección");
-          await addressCtrl.update(formValues, addressId);
+          await addressCtrl.update(formValues, documentId);
         } else {
+          console.log("Crear dirección");
           await addressCtrl.create(formValues, user.id);
         }
 

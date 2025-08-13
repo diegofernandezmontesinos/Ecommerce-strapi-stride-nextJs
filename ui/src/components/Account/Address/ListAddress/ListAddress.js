@@ -16,6 +16,7 @@ export function ListAddress(props) {
     (async () => {
       try {
         const response = await addressCtrl.getAll(user.id);
+        console.log("datos usuario: " + user)
         setAddresses(response.data);
          console.log(addresses)
       } catch (error) {
@@ -36,6 +37,7 @@ export function ListAddress(props) {
           state={item.state}
           city={item.city}
           postal_code={item.postal_code}
+          documentId={item.documentId}
           name={item.name}
           phone={item.phone}
           onReload={onReload}
