@@ -1,9 +1,13 @@
 import { BasicLayout } from "@/layouts";
+import { HomeComponente } from "@/components/Home";
 
 export default function Home() {
   return (
-    <BasicLayout>
-      <h2 style={{ paddingTop: 100 }}>Estamos en Home</h2>
-    </BasicLayout>
+    <>
+      {/* SEO */}
+      <BasicLayout>
+      <HomeComponente.BannerLastGamePublished />
+      </BasicLayout>
+    </>
   );
 }
