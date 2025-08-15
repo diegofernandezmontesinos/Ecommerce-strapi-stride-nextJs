@@ -1,24 +1,33 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Game } from "@/api/game";
 import Link from "next/link";
-import { Game } from "@/api";
 import styles from "./BannerLastGamePublished.module.scss";
 
 const gameCtrl = new Game();
-
 export function BannerLastGamePublished() {
   const [game, setGame] = useState(null);
+  const [wallpaperUrl, setWallpaperUrl] = useState(null);
+
   useEffect(() => {
     (async () => {
       try {
-        const response = await gameCtrl.queLastPublished();
-        console.log(response);
+        const response = await gameCtrl.getLastPublished();
 
-        // Verifica que response.data exista y tenga al menos un elemento
-        if (response?.data?.length > 0) {
-          console.log(response.data[0]);
-          setGame(response.data[0]);
+        const result = response?.data?.[0];
+        if (!result) {
+          console.warn("No se encontró ningún juego publicado.");
+          return;
+        }
+
+        setGame(result);
+
+        const wallpaper =
+          result.wallpaper?.formats?.large?.url || game.wallpaper?.url;
+
+        if (wallpaper) {
+          setWallpaperUrl(wallpaper);
         } else {
-          console.warn("No se encontraron juegos publicados:", response);
+          console.warn("No se encontró wallpaper en el juego:", result);
         }
       } catch (error) {
         console.error("Error al obtener el último juego publicado:", error);
@@ -26,15 +35,20 @@ export function BannerLastGamePublished() {
     })();
   }, []);
 
-if (!game) {
-  return <p>Cargando juego...</p>;
-}
+  if (!game) {
+    return <p>Cargando imagen del juego...</p>;
+  }
 
-  console.log("Juego:", game);
-  const wallpaper = game.wallpaper;
   return (
-    <div>
-      <h2>BannerLastGamePublished</h2>
+    <div className={styles.container}>
+      <img
+        src={wallpaperUrl}
+        alt="Wallpaper del último juego publicado"
+        className={styles.wallpaper}
+      />
+      <Link className={styles.infoContainer} href={game.slug}>
+        <span className={styles.date}>{game.title}</span>
+      </Link>
     </div>
   );
 }

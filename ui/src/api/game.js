@@ -1,7 +1,7 @@
 import { ENV } from "@/utils";
 
 export class Game {
-  async queLastPublished() {
+  async getLastPublished() {
     try {
       const sort="sort=publishedAt:desc";
       const pagination = "pagination[limit]=1";
@@ -11,7 +11,9 @@ export class Game {
       const response = await fetch(url);
       const result = await response.json();
 
-      if (result.status !== 200) throw result;
+    if (!response.ok) {
+        throw new Error(result.message || "Error al obtener el juego");
+      }
       return result;
     } catch (error) {
       throw error;
