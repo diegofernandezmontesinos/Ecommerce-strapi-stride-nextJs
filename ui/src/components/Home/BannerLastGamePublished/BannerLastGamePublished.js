@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Game } from "@/api/game";
 import Link from "next/link";
 import styles from "./BannerLastGamePublished.module.scss";
+import { fn } from "@/utils";
+import { Label } from "@/components/Shared";
 
 const gameCtrl = new Game();
 export function BannerLastGamePublished() {
@@ -39,6 +41,7 @@ export function BannerLastGamePublished() {
     return <p>Cargando imagen del juego...</p>;
   }
 
+  const price = fn.calcDiscountPrice(game.price, game.discount);
   return (
     <div className={styles.container}>
       <img
@@ -47,7 +50,9 @@ export function BannerLastGamePublished() {
         className={styles.wallpaper}
       />
       <Link className={styles.infoContainer} href={game.slug}>
-        <span className={styles.date}>{game.title}</span>
+        <h2 className={styles.date}>{game.title}</h2>
+        <Label.Discount> - {game.discount}% </Label.Discount>
+        <span>{game.price}</span>
       </Link>
     </div>
   );
