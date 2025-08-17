@@ -9,6 +9,7 @@ export default function Home() {
       <BasicLayout>
       <HomeComponente.BannerLastGamePublished />
       <Separator height={100}/>
+      <HomeComponente.LatestGames />
       </BasicLayout>
     </>
   );
